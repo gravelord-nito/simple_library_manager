@@ -185,6 +185,7 @@ public:
   };
 
   User *signUp() {
+    int flag = 0;
     User *newUser = new User();
 
     cout << "Enter your National ID: ";
@@ -197,9 +198,11 @@ public:
     cin >> newUser->last_name;
 
     do {
-      cout << "Username already exists!\n";
+      if (flag)
+        cout << "Username already exists!\n";
       cout << "Enter a username: ";
       cin >> newUser->username;
+      flag = 1;
     } while (users.find(newUser->username) != nullptr);
 
     cout << "Enter a password: ";
